@@ -10,4 +10,11 @@ function weatherData (cityName) {
     });
 }
 
+getWeatherData('Jerusalem')
+
+function returnIconURL (code) {
+    return ' http://openweathermap.org/img/wn' + code + '.png'
+}
+
+
 
