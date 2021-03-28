@@ -4,7 +4,7 @@ var figureEl = document.getElementById('#current-weather');
 var searchEl = document.getElementById('search-button');
 var clearEl = document.getElementById('clear-button');
 
-function weatherData (cityName) {
+function getWeatherData (cityName) {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName +'&appid=' + API_KEY)
     .then(response => response.json())
     .then(data => console.log(data));
