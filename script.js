@@ -1,15 +1,13 @@
 var API_KEY = 'b09197d74428f8d485f51ba02ad2e29c';
 var figureEl = document.getElementById('#current-weather');
-console.log(figureEl)
+// console.log(figureEl)
+var searchEl = document.getElementById('search-button');
+var clearEl = document.getElementById('clear-button');
 
 function weatherData (cityName) {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName +'&appid=' + API_KEY)
     .then(response => response.json())
     .then(data => console.log(data));
-    //     console.log(data)
-    //     var currentWeather = data.weather[0].main
-    //     displayWeather(currentWeather)
-    // });
 }
 
  
@@ -54,3 +52,7 @@ function returnIconURL (code) {
   }
   
   navigator.geolocation.getCurrentPosition(success, error, options);
+
+ //     var currentWeather = data.weather[0].main
+    //     displayWeather(currentWeather)
+    // });
