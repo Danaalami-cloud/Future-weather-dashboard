@@ -71,6 +71,10 @@ function getForecast(latitude, longitude) {
 
       //Going to be creating 5 cards - for data.daily[0] up to data.daily[4]   
       //these will be being appended to the forecast div  
+      var forecast = document.createElement("day1");
+      forecast. textContent = data.daily[0].clouds;
+      forecastCards.appendChild(forecast);
+
     });
 }
 
