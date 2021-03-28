@@ -1,58 +1,80 @@
-var API_KEY = 'b09197d74428f8d485f51ba02ad2e29c';
-var figureEl = document.getElementById('#current-weather');
+var API_KEY = "b09197d74428f8d485f51ba02ad2e29c";
+var figureEl = document.getElementById("#current-weather");
 // console.log(figureEl)
-var searchEl = document.getElementById('search-button');
-var clearEl = document.getElementById('clear-button');
+var searchEl = document.getElementById("search-button");
+var clearEl = document.getElementById("clear-button");
 
-function getWeatherData (cityName) {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName +'&appid=' + API_KEY)
-    .then(response => response.json())
-    .then(data => console.log(data));
+function getWeatherData() {
+  var cityName = document.querySelector("#search-value").value;
+
+  fetch(
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+      cityName +
+      "&appid=" +
+      API_KEY
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+
+      document.querySelector(".currentWeatherCard").innerHTML = "";
+      var currentWeatherCard = document.createElement("div");
+
+      var citySearchedh3 = document.createElement("h2");
+      citySearchedh3.textContent = data.name;
+      currentWeatherCard.appendChild(citySearchedh3);
+
+      var image = document.createElement("img");
+      image.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
+      );
+      currentWeatherCard.appendChild(image);
+
+      var humidity = document.createElement("feels-like");
+      humidity.textContent = humidity.main;
+      currentWeatherCard.appendChild(humidity);
+
+      var temperature = document.createElement("sweating")
+      temperature.textContent = data.name;
+      currentWeatherCard.appendChild(temperature);
+
+        //create element for store the humidity in
+        //assign the testcontent opf the above element whatever the humidity
+        //append the element to the currentWeatherCard
+
+
+      document
+        .querySelector(".currentWeatherCard")
+        .appendChild(currentWeatherCard);
+
+      var latitude = data.coord.lat;
+      console.log(latitude)
+      var longitude = data.coord.lon;
+      console.log(longitude)
+      getForecast(latitude, longitude);
+    });
 }
 
- 
 
- var icons = {
-    clearSky: '01d'
+//5 day forecast
+function getForecast(latitude, longitude) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,hourly,alerts&appid=${API_KEY}`
+  )
+    .then((response) => {
+       
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+
+      //Going to be creating 5 cards - for data.daily[0] up to data.daily[4]   
+      //these will be being appended to the forecast div  
+    });
 }
 
-function returnIconURL (code) {
-    return  'http://openweathermap.org/img/wn/' + code + '.png'
- }
-
- 
- returnIconURL(icons.clearSky)
-
- function displayWeather(currentWeather){
-     figureEl.innerHTML = ''
-     var currentWeather = icons[currentWeather]
-     var imEl = document.createElement('img')
-     imgEl.setAttribute('src', returnIconURL(currentWeather));
-    figureEl.appendChild(imgEl)
- }
- getWeatherData('Jerusalem')
-
- var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
-  
-  function success(pos) {
-    var crd = pos.coords;
-  
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-  }
-  
-  function error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
-  
-  navigator.geolocation.getCurrentPosition(success, error, options);
-
- //     var currentWeather = data.weather[0].main
-    //     displayWeather(currentWeather)
-    // });
+//  getWeatherData('Jerusalem')
+document
+  .querySelector(".search-button")
+  .addEventListener("click", getWeatherData);
