@@ -8,7 +8,7 @@ function getWeatherData() {
     var cityName = document.querySelector("#search-value").value;
 
     fetch(
-            "https://api.openweathermap.org/data/2.5/weather?q=" +
+            "https://api.openweathermap.org/data/2.5/weather?q=&units=metric" +
             cityName +
             "&appid=" +
             API_KEY
@@ -77,21 +77,20 @@ function getForecast(latitude, longitude) {
                 forecast1.appendChild(forecast1humidity);
                 document.querySelector(".forecastCards").appendChild(forecast1);
 
-                // var forecast2 = document.createElement("div");
-                // var forecastimg = document.createElement("p");
-                // forecastimg.textContent = data.daily[i].icon;
-                // forecast2.setAttribute(
-                //     "src",
-                //     `http://openweathermap.org/img/wn/${data.weather[i].icon}.png`
 
-                // forecastCards.appendChild(image);
-                // document.querySelector("forecastCards").appendChild(forecast2);
 
                 var forecast2 = document.createElement("div");
                 var forecast2temp = document.createElement("p");
-                forecast2temp.textContent = data.daily[i].temp;
+                forecast2temp.textContent = data.daily[i].temp.day;
                 forecast2.appendChild(forecast2temp);
                 document.querySelector(".forecastCards").appendChild(forecast2);
+
+
+                var forecast3 = document.createElement("div");
+                var forecast3uv = document.createElement("p");
+                forecast3uv.textContent = data.daily[i].uv.day;
+                forecast3.appendChild(forecast3uv);
+                document.querySelector(".forecastCards").appendChild(forecast3);
             }
 
 
