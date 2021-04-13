@@ -26,16 +26,38 @@
                 <button class="search-button"> Search for a city </button>
             </aside>
 
-            <div class="col-lg-9">
-                <div class="currentWeather">
-                    <h3>Current Weather</h3>
-                    <div class="currentWeatherCard"></div>
-                </div>
-                <div class="forecast">
-                    <h3>Five Day Foreshadowing</h3>
-                    <div class="forecastCards"></div>
+            <div class="card" style="width: 18rem; height: 15rem;">
+                <div class="card-body">
+                    <div class="col-lg-9">
+                        <div class="currentWeather">
+                            <h3>Current Weather</h3>
+                            <div class="currentWeatherCard"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="row">
+                    <div class="card-body">
+                        <h3>Five Day Foreshadowing</h3>
+                        <div class="forecastCards"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-5 rounded"></div>
+                <div class="col-5 rounded"></div>
+                <div class="col-5 rounded"></div>
+                <div class="col-5 rounded"></div>
+                <div class="col-5 rounded"></div>
+            </div>
+            <p>
+                <label>Kelvin</label>
+                <input id="inputKelvin" type="number" placeholder="Kelvin" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)">
+            </p>
+            <p>Celcius: <span id="outputCelcius"></span></p>
 
 
 

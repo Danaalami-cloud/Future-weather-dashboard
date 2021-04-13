@@ -8,10 +8,11 @@ function getWeatherData() {
     var cityName = document.querySelector("#search-value").value;
 
     fetch(
-            "https://api.openweathermap.org/data/2.5/weather?q=&units=metric" +
+            "https://api.openweathermap.org/data/2.5/weather?q=" +
             cityName +
             "&appid=" +
-            API_KEY
+            API_KEY +
+            "&units=metric"
         )
         .then((response) => response.json())
         .then((data) => {
@@ -88,7 +89,7 @@ function getForecast(latitude, longitude) {
 
                 var forecast3 = document.createElement("div");
                 var forecast3uv = document.createElement("p");
-                forecast3uv.textContent = data.daily[i].uv.day;
+                forecast3uv.textContent = data.daily[i].uvi;
                 forecast3.appendChild(forecast3uv);
                 document.querySelector(".forecastCards").appendChild(forecast3);
             }
@@ -98,6 +99,11 @@ function getForecast(latitude, longitude) {
             //these will be being appended to the forecast div
 
         });
+}
+
+function temperatureConverter(valNum) {
+    valNum = parseFloat(valNum);
+    document.getElementById("outputCelcius").innerHTML = valNum - 273.15;
 }
 
 //  getWeatherData('Jerusalem')
