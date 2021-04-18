@@ -7,10 +7,7 @@ var listEl = document.getElementById("list");
 var dateDisplay
 var timestamp = document.querySelector("#take2");
 
-var unixTimestamp
-var milliseconds
-var dateObject
-var humanDateFormat
+
 
 
 
