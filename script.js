@@ -3,9 +3,9 @@ var figureEl = document.getElementById("#current-weather");
 // console.log(figureEl)
 var searchEl = document.getElementById("search-button");
 var clearEl = document.getElementById("clear-button");
-var list = document.getElementById("list");
-var listItem = document.createElement("button");
-// var timestamp = moment(weather.updated, "ddd, DD MMM YYYY HH:mm A");
+var listEl = document.getElementById("list");
+
+// var timestamp = moment.unix(data.daily[i].dt).format('M/D/YYYY');
 
 function getWeatherData(city = "jerusalem") {
     var cityName;
@@ -136,12 +136,12 @@ function temperatureConverter(valNum) {
 }
 
 function createList(listOfCities) {
-    console.log("Create called")
-        // var list = document.getElementById("list");
+    // console.log("Create called")
+    // var list = document.getElementById("list");
     console.log(list)
     list.innerHTML = "";
     for (var i = 0; i < listOfCities.length; i++) {
-        // var listItem = document.createElement("button");
+        var listItem = document.createElement("li");
         listItem.textContent = listOfCities[i];
         listItem.addEventListener("click", getWeatherData(listItem[i]))
 
@@ -169,8 +169,9 @@ if (savedWeatherSearches.length > 0) {
 }
 
 // function displayTime() {
-//     var rightNow = moment().format("MMM DD, YYYY [at] h:mm:ss a");
-//     timeDisplayEl.text(rightNow);
+//     var timestamp = moment.unix(data.daily[i].dt).format('M/D/YYYY');
+
+//     timeDisplayEl.text(timestamp);
 //     colorTime();
 // }
 // setInterval(displayTime, 1000);
