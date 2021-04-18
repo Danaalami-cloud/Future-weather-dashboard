@@ -1,32 +1,35 @@
-.jumbotron {
-    background-color: rgb(233, 105, 58);
-}
-
-#cities {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#current-weather>img {
-    width: 300px;
-    height: 300px;
-}
-
-body {
-    background-color: rgba(230, 203, 50, 0.123);
-    font-family: cursive;
-}
-
-
-/* .witchyball {
-        position: absolute;
-        right: 70%;
-        /* left: 70%; */
-
-
-/* height: 40%;
-    width: 50%;
-    margin-top: 80px;
-}
-*/
+                   .jumbotron {
+                       background-color: rgb(233, 105, 58);
+                   }
+                   
+                   #cities {
+                       display: flex;
+                       flex-direction: column;
+                       justify-content: center;
+                   }
+                   
+                   #current-weather>img {
+                       width: 300px;
+                       height: 300px;
+                   }
+                   
+                   body {
+                       background-color: rgba(230, 203, 50, 0.123);
+                       font-family: cursive;
+                   }
+                   
+                   .witchyball {
+                       position: absolute;
+                       right: 4%;
+                       /* left: 70%; */
+                       height: 110%;
+                       width: 80%;
+                       /* margin-top: 80px; */
+                   }
+                   
+                   .card {
+                       /* background-color: rgba(245, 245, 245, 1);
+                       opacity: .2; */
+                       background: transparent;
+                       color: rgb(248, 161, 47);
+                   }
