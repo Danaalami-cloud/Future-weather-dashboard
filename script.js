@@ -4,10 +4,19 @@ var figureEl = document.getElementById("#current-weather");
 var searchEl = document.getElementById("search-button");
 var clearEl = document.getElementById("clear-button");
 var listEl = document.getElementById("list");
+var dateDisplay
+var timestamp = document.querySelector("#take2");
 
-// var timestamp = moment.unix(data.daily[i].dt).format('M/D/YYYY');
+var unixTimestamp
+var milliseconds
+var dateObject
+var humanDateFormat
+
+
+
 
 function getWeatherData(city = "jerusalem") {
+    timestamp.textContent = new Date().toLocaleDateString()
     var cityName;
     var cityTypedFromUser = document.querySelector("#search-value").value;
 
@@ -79,6 +88,8 @@ function getWeatherData(city = "jerusalem") {
             var longitude = data.coord.lon;
             console.log(longitude);
             getForecast(latitude, longitude);
+
+
         });
 }
 
@@ -97,7 +108,8 @@ function getForecast(latitude, longitude) {
             document.querySelector(".forecastCards").innerHTML = ""
                 // data.daily.length
             for (var i = 0; i < 5; i++) {
-                //console.log(i);
+                console.log(i);
+                // var timestamp = moment.unix(data.daily[i].dt).format('M/D/YYYY');
                 var forecast1 = document.createElement("div");
                 forecast1.setAttribute("class", "col-2");
                 var forecast1humidity = document.createElement("div");
@@ -112,9 +124,14 @@ function getForecast(latitude, longitude) {
                     "src",
                     `http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png`
                 );
-                var date = new Date(data.daily[i].dt);
-                var dateDisplay = document.createElement("div");
-                dateDisplay.textContent = data.daily[i].dt;
+                // var timestamp = new Date(data.daily[i].dt);
+                // timestamp.textContent =
+                //     new Date(data.list[i].dt_txt).toLocaleDateString()
+                // timestamp.textContent = new Date().toLocaleDateString()
+                dateDisplay = document.createElement("p");
+                dateDisplay.innerHTML = new Date().toLocaleDateString();
+                // console.log("fivet time" + data.list[i].dt)
+
 
                 forecast1.appendChild(dateDisplay);
                 forecast1.appendChild(image);
